@@ -1,6 +1,5 @@
-name := "progfun"
+name := "DevCamp-2016"
 
-version := "1.0"
+version := "0.1"
 
-scalaVersion := "2.11.4"
-    
+scalaVersion := "2.11.8"

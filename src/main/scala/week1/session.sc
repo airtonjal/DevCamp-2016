@@ -1,5 +1,5 @@
 object session {
-  1 + 3
+  1 + 2
   def abs(x: Double) = if (x < 0) -x else x
 
   def sqrt(x: Double) = {
@@ -7,7 +7,7 @@ object session {
       if (isGoodEnough(guess)) guess
       else sqrIter(improve(guess))
 
-    def isGoodEnough( guess: Double) =
+    def isGoodEnough(guess: Double) =
       abs(guess * guess - x) < x * 0.0001
 
     def improve(guess: Double) =

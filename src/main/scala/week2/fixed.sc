@@ -20,4 +20,7 @@ object fixed {
     fixedPoint(averageDamp(y => x / y))(1)
 //    averageDamp(y => x / y, 1)
   sqrt(2)
+
+  val myList1 = new scala.collection.mutable.ArrayBuffer[Int]()
+  var myList2 = List[Int](1, 2, 3)
 }
