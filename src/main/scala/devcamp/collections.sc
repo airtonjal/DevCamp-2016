@@ -3,11 +3,11 @@ import java.net.InetSocketAddress
 val l = List(1, 2, 3, 4, 5)
 val fruits = List("apples", "oranges", "pears")
 
-//val first = l.head
-//val last  = l.last
+val first = l.head
+val last  = l.last
 
-//l.map(_ * 2)
-//
+l.map(_ * 2)
+
 def f(x: Int) = if (x > 2) Some(x) else None
 //def double(x: Int) = x * 2
 

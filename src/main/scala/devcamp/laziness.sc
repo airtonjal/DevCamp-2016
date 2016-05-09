@@ -5,5 +5,3 @@ val y = new Y
 val x = new X
 
 //y.y
-//y.y
-//y.y
