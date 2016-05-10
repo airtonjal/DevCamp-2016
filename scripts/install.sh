@@ -9,4 +9,4 @@ install_brew() {
   fi
 }
 
-brew install zookeeper kafka spark 
+brew install zookeeper kafka apache-spark 
