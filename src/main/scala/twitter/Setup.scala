@@ -5,7 +5,6 @@ import org.apache.spark.streaming.twitter.TwitterUtils
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import org.apache.spark.{SparkConf, SparkContext}
 import org.slf4j.LoggerFactory
-import twitter4j.conf.ConfigurationBuilder
 
 /**
   * Sets up Twitter stream
@@ -25,8 +24,8 @@ object Setup {
   val sc   = new SparkContext(conf)
   val ssc  = new StreamingContext(sc, Seconds(2))
 
-  log.info("Creating Twitter stream")
-  val twitterStream = TwitterUtils.createStream(ssc, None)
+  conf.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
+  conf.registerKryoClasses(Array(classOf[Tweet]))
 
   def setupTwitter(consumerKey: String, consumerSecret: String, accessToken: String, accessTokenSecret: String) ={
     // Set up the system properties for twitter
@@ -45,6 +44,10 @@ object Setup {
     System.setProperty("twitter4j.oauth.authenticationURL", "https://api.twitter.com/oauth/authenticate")
     System.setProperty("sync.numThreads", "4")
     System.setProperty("jsonStoreEnabled", "true")
+  }
 
+  def createStream = {
+    log.info("Creating Twitter stream")
+    TwitterUtils.createStream(ssc, None)
   }
 }

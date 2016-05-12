@@ -13,7 +13,7 @@ object Hashtags {
 
   def main(args: Array[String]) {
     val WINDOW = 120
-    val hashTags = Setup.twitterStream.flatMap(status => status.getHashtagEntities.map("#" + _.getText))
+    val hashTags = Setup.createStream.flatMap(status => status.getHashtagEntities.map("#" + _.getText))
     val topHashTags = hashTags.map((_, 1)).reduceByKeyAndWindow(_ + _, Seconds(WINDOW))
       .map{ case (hashTag, count) => (count, hashTag) }
       .transform(_.sortByKey(ascending = false))
