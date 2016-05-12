@@ -21,5 +21,11 @@ object TweetSerializer {
   def toJson(tweet: Tweet) = new String(write(tweet).getBytes(UTF8), UTF8)
   def fromJson(json: String) = read[Tweet](json)
 
+  def toMap(tweet: Tweet) = Map(
+    "text"     -> tweet.text,
+    "created"  -> tweet.created,
+    "location" -> tweet.location.orNull,
+    "language" -> tweet.language,
+    "user"     -> tweet.user)
 
 }

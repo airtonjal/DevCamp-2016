@@ -9,9 +9,12 @@
   <root level="INFO">
     <appender-ref ref="STDOUT" />
   </root>
-  <logger name="org.apache.zookeeper" level="WARN"/>
-  <logger name="org.spark-project.jetty" level="WARN"/>
-  <logger name="org.apache.spark" level="WARN"/>
+  <logger name="org.apache.zookeeper"     level="WARN"/>
+  <logger name="org.spark-project.jetty"  level="WARN"/>
+  <logger name="org.apache.spark"         level="WARN"/>
+  <logger name="org.apache.spark"         level="WARN"/>
   <logger name="org.apache.spark.storage" level="ERROR"/>
+  <logger name="consumer.kafka"           level="WARN"/>
+  <logger name="org.apache.curator"       level="WARN"/>
 
 </configuration>

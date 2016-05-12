@@ -20,9 +20,16 @@ object Setup {
                config.getString("oauth.accessToken"), config.getString("oauth.accessTokenSecret"))
 
   log.info("Starting Spark")
-  val conf = new SparkConf().setMaster("local[2]").setAppName("Twitter pipeline")
+  val conf = new SparkConf()
+    .setMaster("local[2]")
+    .setAppName("Twitter pipeline")
+    .set("spark.executor.memory", "1g")
+    .set("spark.rdd.compress", "true")
+    .set("spark.storage.memoryFraction", "1")
+    .set("spark.streaming.unpersist", "true")
+    .set("spark.streaming.receiver.writeAheadLog.enable", "false")
   val sc   = new SparkContext(conf)
-  val ssc  = new StreamingContext(sc, Seconds(2))
+  val ssc  = new StreamingContext(sc, Seconds(1))
 
   conf.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
   conf.registerKryoClasses(Array(classOf[Tweet]))
