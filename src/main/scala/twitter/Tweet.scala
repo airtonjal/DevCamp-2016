@@ -13,6 +13,9 @@ import java.util.Date
   */
 case class Tweet(text: String, created: Date, location: Option[Map[String, Double]], language: String, user: String)
 
+case class AnalyzedTweet(text: String, created: Date, location: Option[Map[String, Double]], language: String, user: String,
+                 sentiment: String)
+
 object TweetSerializer {
   implicit val formats = Serialization.formats(NoTypeHints)
 
@@ -21,11 +24,12 @@ object TweetSerializer {
   def toJson(tweet: Tweet) = new String(write(tweet).getBytes(UTF8), UTF8)
   def fromJson(json: String) = read[Tweet](json)
 
-  def toMap(tweet: Tweet) = Map(
-    "text"     -> tweet.text,
-    "created"  -> tweet.created,
-    "location" -> tweet.location.orNull,
-    "language" -> tweet.language,
-    "user"     -> tweet.user)
+  def toMap(tweet: AnalyzedTweet) = Map(
+    "text"      -> tweet.text,
+    "created"   -> tweet.created,
+    "location"  -> tweet.location.orNull,
+    "language"  -> tweet.language,
+    "user"      -> tweet.user,
+    "sentiment" -> tweet.sentiment)
 
 }
