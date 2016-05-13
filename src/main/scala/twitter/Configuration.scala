@@ -16,7 +16,7 @@ object Configuration {
   private val log = LoggerFactory.getLogger(getClass)
   val p = new Properties
 
-  val TOPIC = "tweets-test"
+  val TOPIC = "tweets"
   val PARTITIONS = 10
 
   // Randomly chooses a groupId name to avoid polluting zookeeper data
