@@ -20,7 +20,7 @@ object KafkaConsumer {
   val numberOfReceivers = 3
 
   import ESLoader._
-  val kafkaStream = ReceiverLauncher.launch(Setup.ssc, p, 3, StorageLevel.MEMORY_ONLY)
+  val kafkaStream = ReceiverLauncher.launch(Setup.ssc, p, numberOfReceivers, StorageLevel.MEMORY_ONLY)
   kafkaStream.foreachRDD(rdd => {
     rdd.collect()
     log.info("Number of records in this RDD: " + rdd.count())

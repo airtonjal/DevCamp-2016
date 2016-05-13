@@ -39,10 +39,10 @@ trait MailboxService {
 object MockEmailRepository extends EmailRepository {
   def getMails(user: User, unread: Boolean): Seq[Email] =
     Email(
-      subject   = "It's me again, your stalker friend!",
-      text      = "Hello my friend! How are you?",
-      sender    = "johndoe@example.com",
-      recipient = "me@example.com") :: Nil
+      subject   = "Luke!",
+      text      = "I am your father (shshshshshsh)",
+      sender    = "darthvador@deathstar.com",
+      recipient = "luke@rebellion.com") :: Nil
 }
 object MockFilterRepository extends FilterRepository {
   def getEmailFilter(user: User): EmailFilter = _ => true
@@ -52,4 +52,4 @@ object MailboxServiceWithMockDeps extends MailboxService {
     getNewMails(MockEmailRepository)(MockFilterRepository) _
 }
 
-MailboxServiceWithMockDeps.newMails(User("daniel"))
+MailboxServiceWithMockDeps.newMails(User("Luke"))
