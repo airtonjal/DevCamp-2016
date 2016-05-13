@@ -24,7 +24,7 @@ object ESLoader {
   def toMap(tweet: Tweet) = {
     val l = tweet.location match {
       case Some(location) => new GeoPoint(location("lat"), location("lon")).geohash()
-      case None => null
+      case None           => null
     }
     Map(
       "text"     -> tweet.text,
@@ -42,8 +42,7 @@ object ESLoader {
         "user"     typed StringType,
         "location" typed GeoPointType,
         "created"  typed DateType
-        )
-      )
+        ))
   }.await
 
   def main(args: Array[String]) = {
