@@ -1,5 +1,4 @@
 import scala.io.Source
-import scala.xml.XML
 
 (1 to 10) map { _ * 2 }
 

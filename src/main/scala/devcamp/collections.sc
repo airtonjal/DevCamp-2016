@@ -5,13 +5,14 @@ val fruits = List("apples", "oranges", "pears")
 
 val first = l.head
 val last  = l.last
+val tail = l.tail
 
 l.map(_ * 2)
 
 def f(x: Int) = if (x > 2) Some(x) else None
 //def double(x: Int) = x * 2
 
-//l.map(f)
+l.map(f)
 //l map f
 //l.map(x => f(x))
 
